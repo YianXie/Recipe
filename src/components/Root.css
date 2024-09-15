@@ -1,0 +1,19 @@
+nav {
+    display: 'flex';
+    width: '100%';
+    flex-direction: 'row';
+    justify-content: 'space-evenly';
+    align-items: 'center';
+    background: 'lightblue';
+    padding: '10px';
+}
+
+Link {
+    text-decoration: 'none';
+    color: 'grey';
+    font-size: '20px';
+}
+
+Link:hover {
+    color: 'black';
+}

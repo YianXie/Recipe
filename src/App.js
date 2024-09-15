@@ -1,10 +1,35 @@
 import './App.css';
+import React from 'react';
+import Root from './components/Root';
+import AddRecipe from './components/AddRecipe';
+import Random from './components/Random';
+import Home from './components/Home';
+import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+
+const router = createBrowserRouter([
+  {
+      path: "/",
+      element: <Root />,
+      children: [
+          {
+              path: "/addRecipe",
+              element: <AddRecipe />,
+          },
+          {
+              path: "/random",
+              element: <Random />,
+          },
+          {
+              path: "/home",
+              element: <Home />,
+          }
+      ]
+  },
+]);
 
 function App() {
   return (
-    <div className="App">
-      <h1>React App</h1>
-    </div>
+    <RouterProvider router={router} />
   );
 }
 
