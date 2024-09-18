@@ -83,6 +83,7 @@ const AddRecipe = () => {
         event.preventDefault();
         state.ingredients = splitIngredients(state.ingredients);
         dispatch(addRecipe(state));
+        alert("Recipe added successfully");
     }
 
     return (
