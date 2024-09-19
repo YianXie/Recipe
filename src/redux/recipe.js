@@ -18,23 +18,7 @@ try {
 	console.error(error);
 }
 
-const initialState = 
-    // {
-    //     name: "Pasta",
-    //     ingredients: ["pasta", "tomato sauce", "cheese"],
-    //     instructions: "Cook pasta, add tomato sauce, add cheese",
-    // },
-    // {
-    //     name: "Salad",
-    //     ingredients: ["lettuce", "tomato", "cucumber"],
-    //     instructions: "Cut lettuce, tomato, cucumber, mix together",
-    // },
-    // {
-    //     name: "Soup",
-    //     ingredients: ["water", "vegetables", "salt"],
-    //     instructions: "Boil water, add vegetables, add salt",
-    // }
-result
+const initialState = result
 
 const recipeSlice = createSlice({
     name: 'recipe',

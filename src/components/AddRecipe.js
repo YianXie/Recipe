@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addRecipe } from "../redux/recipe";
 import styled from "styled-components";
 
@@ -29,6 +29,7 @@ const TextArea = styled.textarea`
     margin: 10px 0;
     resize: vertical;
     overflow: auto;
+    padding: 5px;
 `
 
 const ShortAnswer = styled.input`
@@ -58,18 +59,14 @@ const Button = styled.button`
 
 const AddRecipe = () => {
     const dispatch = useDispatch();
+    const recipes = useSelector((state) => state.recipe)
 
     const [state, setState] = useState({
-        name: "",
+        title: "",
+        servings: 0,
         ingredients: "",
         instructions: "",
     });
-
-    const splitIngredients = (ingrediants) => {
-        ingrediants = ingrediants.trim();
-        const ingredientsList = ingrediants.split(",");
-        return ingredientsList;
-    }
     
     const handleOnChange = (event) => {
         const { name, value } = event.target;
@@ -77,13 +74,31 @@ const AddRecipe = () => {
             ...state,
             [name]: value,
         });
+    } 
+
+    const checkDuplicateItem = (item) => {
+        let itemValid = true;
+        for (let i = 0; i < recipes.length; i++) {
+            if (recipes[i].title == item) {
+                itemValid = false;
+                break;
+            }
+        }
+
+        if (!itemValid) {
+            return false;
+        }
+        return true;
     }
     
     const handleOnSubmit = (event) => {
         event.preventDefault();
-        state.ingredients = splitIngredients(state.ingredients);
-        dispatch(addRecipe(state));
-        alert("Recipe added successfully");
+        if (checkDuplicateItem(state.title)) {
+            dispatch(addRecipe(state));
+            alert("Recipe added successfully");
+        } else {
+            alert("Item already exists!\r\nTry again!");
+        }
     }
 
     return (
