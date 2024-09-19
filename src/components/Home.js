@@ -32,6 +32,7 @@ const AddRecipe = styled.a`
 
 const Home = () => {
     const recipes = useSelector((state) => state.recipe);
+    console.log(recipes);
 
     return (
         <div>
@@ -40,14 +41,16 @@ const Home = () => {
                 <tbody>
                     <tr>
                         <th>Name</th>
+                        <th>Servings</th>
                         <th>Ingredients</th>
                         <th>Instructions</th>
                     </tr>
                     {
                         recipes.map((recipe, index) => (
                             <tr key={index}>
-                                <td>{recipe.name}</td>
-                                <td>{recipe.ingredients.join(", ")}</td>
+                                <td>{recipe.title}</td>
+                                <td>{recipe.servings}</td>
+                                <td>{recipe.ingredients}</td>
                                 <td>{recipe.instructions}</td>
                             </tr>
                         ))

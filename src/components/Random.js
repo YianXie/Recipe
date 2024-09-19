@@ -15,12 +15,11 @@ const Heading = styled.h2`
     font-family: monospace;
 `
 
-const Ol = styled.ol`
-    text-align: center;
-`
-
 const P = styled.p`
-    text-align: center
+    text-align: center;
+    ${'' /* width: 80%; */}
+    margin-left: 10rem;
+    margin-right: 10rem;
 `
 
 const Random = () => {
@@ -28,15 +27,11 @@ const Random = () => {
     const randomRecipe = recipes[Math.floor(Math.random() * recipes.length)];
     return (
         <div>
-            <Title>{randomRecipe.name}</Title>
+            <Title>{randomRecipe.title}</Title>
+            <Heading>{randomRecipe.servings}</Heading>
+            <br></br>
             <Heading>Ingredients</Heading>
-            <Ol>
-                {
-                    randomRecipe.ingredients.map((ingredients, index) => (
-                        <li key={index}>{ingredients}</li>
-                    ))
-                }
-            </Ol>
+            <P>{randomRecipe.ingredients}</P>
             <Heading>Instructions</Heading>
             <P>{randomRecipe.instructions}</P>
         </div>

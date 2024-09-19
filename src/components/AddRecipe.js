@@ -91,9 +91,11 @@ const AddRecipe = () => {
             <H1>Add Recipe</H1>
             <Form onSubmit={handleOnSubmit}>
                 <Label>Name</Label>
-                <ShortAnswer name="name" placeholder="Enter name here" onChange={handleOnChange} required /> 
+                <ShortAnswer name="title" placeholder="Enter name here" onChange={handleOnChange} required /> 
+                <Label>Servings</Label>
+                <ShortAnswer name="servings" type="number" placeholder="Servings number" onChange={handleOnChange} required />
                 <Label>Ingredients</Label>
-                <TextArea name="ingredients" placeholder="Ingredients 1, ingredients 2, ingredients 3..." onChange={handleOnChange} required />
+                <TextArea name="ingredients" placeholder="Enter ingredients here" onChange={handleOnChange} required />
                 <Label>Instructions</Label>
                 <TextArea name="instructions" placeholder="Enter instructions here" onChange={handleOnChange} />
                 <Button type="submit">Add Recipe</Button>
