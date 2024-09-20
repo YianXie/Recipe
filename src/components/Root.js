@@ -16,10 +16,12 @@ const LINK = styled(NavLink)`
   font-family: Arial, sans-serif;
   color: #4d5057;
   &.active {
-    color: black;
+    color: white;
+    background-color: gray;
   }
   &:hover {
-    color: black;
+    color: white;
+    background: gray;
   }
 `;
 

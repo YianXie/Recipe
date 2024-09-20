@@ -24,7 +24,8 @@ const Form = styled.form`
 `
 
 const TextArea = styled.textarea`
-    width: 60%;
+    display: block;
+    width: 100%;
     min-height: 30px;
     margin: 10px 0;
     resize: vertical;
@@ -36,11 +37,12 @@ const ShortAnswer = styled.input`
     padding: 5px;
     border-radius: 5px;
     border: 1px solid #ccc;
+    margin: 10px 0;
 `
 
 const Label = styled.label`
     font-family: Arial, sans-serif;
-    margin: 10px 0;
+    margin-top: 10px;
 `
 
 const Button = styled.button`
@@ -55,6 +57,12 @@ const Button = styled.button`
         background-color: #4d5057;
         color: white;
     }
+`
+
+const Section = styled.div`
+    display: flex;
+    flex-direction: column;
+    
 `
 
 const AddRecipe = () => {
@@ -82,7 +90,7 @@ const AddRecipe = () => {
             if (recipes[i].title == item) {
                 itemValid = false;
                 break;
-            }
+            } 
         }
 
         if (!itemValid) {
@@ -105,14 +113,22 @@ const AddRecipe = () => {
         <div>
             <H1>Add Recipe</H1>
             <Form onSubmit={handleOnSubmit}>
-                <Label>Name</Label>
-                <ShortAnswer name="title" placeholder="Enter name here" onChange={handleOnChange} required /> 
-                <Label>Servings</Label>
-                <ShortAnswer name="servings" type="number" placeholder="Servings number" onChange={handleOnChange} required />
-                <Label>Ingredients</Label>
-                <TextArea name="ingredients" placeholder="Enter ingredients here" onChange={handleOnChange} required />
-                <Label>Instructions</Label>
-                <TextArea name="instructions" placeholder="Enter instructions here" onChange={handleOnChange} />
+                <Section>
+                    <Label>Name</Label>
+                    <ShortAnswer name="title" placeholder="Enter name here" onChange={handleOnChange} required /> 
+                </Section>
+                <Section>
+                    <Label>Servings</Label>
+                    <ShortAnswer name="servings" type="number" placeholder="Servings number" onChange={handleOnChange} required />
+                </Section>
+                <Section>
+                    <Label>Ingredients</Label>
+                    <TextArea name="ingredients" placeholder="Enter ingredients here" onChange={handleOnChange} required />
+                </Section>
+                <Section>
+                    <Label>Instructions</Label>
+                    <TextArea name="instructions" placeholder="Enter instructions here" onChange={handleOnChange} />
+                </Section>
                 <Button type="submit">Add Recipe</Button>
             </Form>
         </div>
