@@ -20,4 +20,11 @@ router.post('/', async (req, res) => {
     res.json({ id: result.lastID });
 });
 
+router.delete('/:id', async (req, res) => {
+    const db = await initDB();
+    const { id } = req.params;
+    const result = await db.run('DELETE FROM recipes WHERE id = ?', [id]);
+    res.json({ id: id, message: 'Recipe deleted' });
+});
+
 export default router;

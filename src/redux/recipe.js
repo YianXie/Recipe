@@ -58,6 +58,14 @@ export const addRecipeToDB = createAsyncThunk('recipe/addRecipeToBackend', async
     return response.json();
 });
 
+export const deleteRecipe = createAsyncThunk('recipe/deleteRecipe', async (id) => {
+    const response = await fetch(`${apiUrl}/${id}`, {
+        method: 'DELETE',
+    });
+    console.log(response.json());
+    return response.json();
+});
+
 const recipeSlice = createSlice({
     name: 'recipe',
     initialState: [],
@@ -68,6 +76,19 @@ const recipeSlice = createSlice({
         });
         builder.addCase(addRecipeToDB.fulfilled, (state, action) => {
             state.push(action.payload);
+        });
+        builder.addCase(deleteRecipe.fulfilled, (state, action) => {
+            console.log("I am deleting");
+            console.log(state);
+            const index = state.findIndex((recipe) => recipe.id === action.payload.id);
+            if (index !== -1) {
+                state.splice(index, 1);
+            }
+            // return state.filter((recipe) => 
+            //     // console.log(action.payload.id);
+            //     // console.log(recipe.id);
+            //     recipe.id !== action.payload.id
+            // );
         });
     },
 });

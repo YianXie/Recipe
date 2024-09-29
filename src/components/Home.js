@@ -1,7 +1,8 @@
 import React, {useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { fetchRecipes } from "../redux/recipe";
+import { fetchRecipes, deleteRecipe } from "../redux/recipe";
+// import { deleteRecipe } from "../redux/recipe";
 
 const H1 = styled.h1`
     text-align: center;
@@ -31,6 +32,12 @@ const AddRecipe = styled.a`
     font-size: 1.2rem;
 `
 
+const DeleteButton = styled.a`
+    color: red;
+    text-decoration: underline;
+    cursor: pointer;
+`
+
 const Home = () => {
     const recipes = useSelector((state) => state.recipe);
     console.log(recipes);
@@ -40,6 +47,12 @@ const Home = () => {
     useEffect(() => {
         dispatch(fetchRecipes());
     }, [dispatch]);
+
+    
+
+    const deleteItem = (id) => {
+        dispatch(deleteRecipe(id));
+    }
 
     return (
         <div>
@@ -59,6 +72,7 @@ const Home = () => {
                                 <td>{recipe.servings}</td>
                                 <td>{recipe.ingredients}</td>
                                 <td>{recipe.instructions}</td>
+                                <td><DeleteButton onClick={() => deleteItem(recipe.id)}>Delete</DeleteButton></td>
                             </tr>
                         ))
                     }
