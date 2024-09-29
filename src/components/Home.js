@@ -1,6 +1,7 @@
-import React from "react";
-import { useSelector } from "react-redux";
+import React, {useEffect} from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { fetchRecipes } from "../redux/recipe";
 
 const H1 = styled.h1`
     text-align: center;
@@ -33,6 +34,12 @@ const AddRecipe = styled.a`
 const Home = () => {
     const recipes = useSelector((state) => state.recipe);
     console.log(recipes);
+    const dispatch = useDispatch();
+
+    // Change here
+    useEffect(() => {
+        dispatch(fetchRecipes());
+    }, [dispatch]);
 
     return (
         <div>

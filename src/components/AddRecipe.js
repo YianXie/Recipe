@@ -1,6 +1,6 @@
 import React, {useState} from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { addRecipe } from "../redux/recipe";
+import { addRecipeToDB } from "../redux/recipe";
 import styled from "styled-components";
 
 const H1 = styled.h1`
@@ -99,10 +99,12 @@ const AddRecipe = () => {
         return true;
     }
     
+
+    // CHANGE HERE
     const handleOnSubmit = (event) => {
         event.preventDefault();
         if (checkDuplicateItem(state.title)) {
-            dispatch(addRecipe(state));
+            dispatch(addRecipeToDB(state));
             alert("Recipe added successfully");
         } else {
             alert("Item already exists!\r\nTry again!");
