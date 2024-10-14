@@ -87,7 +87,7 @@ const AddRecipe = () => {
     const checkDuplicateItem = (item) => {
         let itemValid = true;
         for (let i = 0; i < recipes.length; i++) {
-            if (recipes[i].title == item) {
+            if (recipes[i].title === item) {
                 itemValid = false;
                 break;
             } 
